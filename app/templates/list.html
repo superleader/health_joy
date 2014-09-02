@@ -1,0 +1,21 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Product list </h1>
+<form>
+Search by proprietary name: <input name=q {% if q%} value="{{ q}}" {% endif %}/>
+</form>
+<table border=1 width="100%">
+	<tr><th>ID</th><th>NDC</th><th>TYPE</th><th>PROPRIETARY NAME</th><th>PROPRIETARY SUFFIX</th></tr>
+{% for p in products %}
+  <tr>
+  	<td>{{ p.id }}</td>
+  	<td>{{ p.ndc }}</td>
+  	<td>{{ p.typename }}</td>
+  	<td>{{ p.proprietary_name}}</td>
+  	<td>{{ p.proprietary_name_suffix}}  &nbsp;</td>
+  </tr>
+{% endfor %}
+</table>
+{% endblock %}
